@@ -1,6 +1,9 @@
 import React from "react";
 import {TextInput, StyleSheet} from "react-native";
 
+/* This component renders the text and handles text changes. Multiline prop handles text wrapping, 
+while blurOnSubmit means the device keyboard return key will trigger the submit action,
+rather than move the cursor to the next line */
 const TextEditor = ({data, actions}) => {
   const [text, setText] = React.useState("" || data.todo.text);
 
@@ -33,8 +36,9 @@ const TextEditor = ({data, actions}) => {
       onSubmitEditing={onSubmit}
       onEndEditing={onSubmit}
       onChangeText={text => setText(text)}
+      blurOnSubmit
       multiline
-      maxLength={400}
+      maxLength={1000}
       value={text}
       autoCapitalize="sentences"
       keyboardAppearance="default"
