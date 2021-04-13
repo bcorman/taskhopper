@@ -9,18 +9,20 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
-const Options = ({priority, id, openFormID, setFormID, updateTodo}) => {
-  const [displayForm, toggleDisplayForm] = React.useState(openFormID === id);
+const Options = ({data, setFormID, updateTodo}) => {
+  const [displayForm, toggleDisplayForm] = React.useState(
+    data.openFormID === data.id,
+  );
   const options = ["High", "Med", "Low"];
   const colors = ["red", "#bdb717", "blue"];
 
   const setPriority = newPriority => {
-    if (newPriority !== priority) {
-      updateTodo(id, {priority: newPriority});
+    if (newPriority !== data.priority) {
+      updateTodo(data.id, {priority: newPriority});
     }
   };
   const toggleFormOpen = () => {
-    displayForm ? setFormID(null) : setFormID(id);
+    displayForm ? setFormID(null) : setFormID(data.id);
 
     toggleDisplayForm(display => !display);
   };
@@ -32,7 +34,7 @@ const Options = ({priority, id, openFormID, setFormID, updateTodo}) => {
           <Icon name="more-vert" size={25} />
         </Pressable>
       </View>
-      {displayForm && id === openFormID ? (
+      {displayForm && data.id === data.openFormID ? (
         <View style={styles.formContainer}>
           <View style={styles.form}>
             {options.map((option, key) => (

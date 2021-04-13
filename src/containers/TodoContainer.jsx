@@ -2,8 +2,9 @@ import React from "react";
 import {StyleSheet, View} from "react-native";
 import TextEditor from "../components/TextEditor";
 import StatusContainer from "./StatusContainer";
+import Options from "../components/Options";
 
-const TodoContainer = ({todo, actions}) => {
+const TodoContainer = ({todo, openFormID, actions}) => {
   // Set todo to active if it contains no text
   const [isActive, setActive] = React.useState(!todo.text || false);
   const backgroundColor = ["#ff7a7a", "#fdffc7", "#b3e8ff"][todo.priority];
@@ -22,6 +23,11 @@ const TodoContainer = ({todo, actions}) => {
         toggleComplete={toggleComplete}
       />
       <TextEditor data={{todo, isActive}} actions={{...actions, setActive}} />
+      <Options
+        data={{priority: todo.priority, id: todo.id, openFormID}}
+        setFormID={actions.setFormID}
+        updateTodo={actions.updateTodo}
+      />
     </View>
   );
 };

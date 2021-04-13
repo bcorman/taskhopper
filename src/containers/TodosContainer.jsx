@@ -9,13 +9,21 @@ import {
 import uuid from "react-native-uuid";
 import TodoContainer from "./TodoContainer";
 import NewTodoFooter from "../components/NewTodoFooter";
-import Options from "../components/Options";
 import {seedData} from "../seedData";
 
+/* This container handles the bulk of the work in the app. 
+It renders a View containing a KeyboardAvoidingView and the New Todo button footer
+Inside the KeyboardAvoidingView a Flatlist handles the rendering of each Todo
+*/
+
 const TodosContainer = ({showComplete}) => {
+  /* State keeps track of todos, as well as the id of the currently active todo.
+ This id passed to the Options component (The vertical dots button where a todo's priority can be changed),
+ and ensures that only one options menu is open at a time. */
   const [todos, setTodos] = React.useState(sort(seedData));
   const [openFormID, setFormID] = React.useState(null);
 
+  // Sort todos by priority. If priorities are equal, sort by dateCreated
   function sort(todos) {
     return todos.sort(
       (a, b) => a.priority - b.priority || a.dateCreated - b.dateCreated,
@@ -23,7 +31,7 @@ const TodosContainer = ({showComplete}) => {
   }
 
   const addTodo = () => {
-    // If a new todo is added, close any open forms
+    // set formID to null to close any open forms
     setFormID(null);
     const newTodo = {
       text: "",
@@ -77,17 +85,7 @@ const TodosContainer = ({showComplete}) => {
                 <TodoContainer
                   todo={item}
                   openFormID={openFormID}
-                  setFormID={id => setFormID(id)}
-                  actions={{updateTodo, deleteTodo}}
-                />
-              </View>
-              <View style={styles.optionsContainer}>
-                <Options
-                  priority={item.priority}
-                  id={item.id}
-                  openFormID={openFormID}
-                  setFormID={setFormID}
-                  updateTodo={updateTodo}
+                  actions={{updateTodo, deleteTodo, setFormID}}
                 />
               </View>
             </View>
@@ -117,9 +115,6 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     flex: 1,
-  },
-  optionsContainer: {
-    zIndex: 1,
   },
   contentContainer: {
     paddingBottom: 20,
