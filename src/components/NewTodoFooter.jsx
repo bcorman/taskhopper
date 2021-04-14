@@ -7,6 +7,7 @@ const NewTodoFooter = ({addTodo}) => {
     <TouchableOpacity
       style={styles.pressable}
       onPressIn={() =>
+        // add a slight delay so the button animation is visible
         setTimeout(() => {
           addTodo();
         }, 120)

@@ -26,10 +26,16 @@ const TextEditor = ({data, actions}) => {
         }
       }}
       onBlur={() => {
+        // Deactivate todo if user blurs component
         if (data.isActive) {
           actions.setActive(false);
         }
-        if (!text && !data.todo.text) {
+
+        // Delete todo if it is empty or contains only whitespace characters
+        if (
+          ((!text || !text.trim().length) && !data.todo.text) ||
+          !data.todo.text.trim().length
+        ) {
           actions.deleteTodo(data.todo.id);
         }
       }}

@@ -5,11 +5,7 @@ import CheckBox from "../components/CheckBox";
 const StatusContainer = ({data, toggleComplete}) => {
   return (
     <View style={styles.container}>
-      <CheckBox
-        id={data.id}
-        complete={data.complete}
-        toggleComplete={toggleComplete}
-      />
+      <CheckBox data={data} toggleComplete={toggleComplete} />
     </View>
   );
 };
