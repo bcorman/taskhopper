@@ -2,33 +2,30 @@ import React from "react";
 import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
-export default class NewTodoFooter extends React.Component {
-  addTodo = () => this.props.addTodo();
-  render() {
-    return (
-      <TouchableOpacity
-        style={styles.pressable}
-        onPressIn={() =>
-          setTimeout(() => {
-            this.addTodo();
-          }, 120)
-        }>
-        <View style={styles.container}>
-          <Icon.Button
-            name="add-circle-outline"
-            style={styles.button}
-            backgroundColor="rgba(0,0,0,0)"
-            color={"blue"}
-            underlayColor="rgba(0,0,0,0)"
-            size={40}
-            onPress={this.addTodo}
-          />
-          <Text style={styles.text}>New Todo</Text>
-        </View>
-      </TouchableOpacity>
-    );
-  }
-}
+const NewTodoFooter = ({addTodo}) => {
+  return (
+    <TouchableOpacity
+      style={styles.pressable}
+      onPressIn={() =>
+        setTimeout(() => {
+          addTodo();
+        }, 120)
+      }>
+      <View style={styles.container}>
+        <Icon.Button
+          name="add-circle-outline"
+          style={styles.button}
+          backgroundColor="#FAFAFA"
+          color={"#223843"}
+          underlayColor="#FAFAFA"
+          size={40}
+          onPress={addTodo}
+        />
+        <Text style={[styles.text, styles.color]}>New Todo</Text>
+      </View>
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -43,6 +40,11 @@ const styles = StyleSheet.create({
   text: {
     marginLeft: 5,
     fontSize: 24,
+    fontWeight: "500",
   },
-  pressable: {},
+  color: {
+    color: "#223843",
+  },
 });
+
+export default NewTodoFooter;
