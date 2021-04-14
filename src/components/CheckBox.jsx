@@ -1,5 +1,4 @@
 import React from "react";
-import {StyleSheet} from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
 const CheckBox = ({data, toggleComplete}) => {
@@ -13,8 +12,6 @@ const CheckBox = ({data, toggleComplete}) => {
       color={"blue"}
       underlayColor="rgba(0,0,0,0)"
       size={30}
-      style={styles.container}
-      iconStyle={styles.checkBox}
       activeOpacity={1}
       borderRadius={5}
       onPress={() => {
@@ -29,8 +26,4 @@ const CheckBox = ({data, toggleComplete}) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {},
-  checkBox: {},
-});
 export default CheckBox;
