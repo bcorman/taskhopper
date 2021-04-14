@@ -1,7 +1,7 @@
 import React from "react";
 import {StyleSheet, View} from "react-native";
-import Header from "../components/Header";
-import TodosContainer from "../containers/TodosContainer";
+import Header from "../components/Header.jsx";
+import TodosContainer from "../containers/TodosContainer.jsx";
 
 const TodoScreen = () => {
   const [showComplete, toggleShowComplete] = React.useState(false);

@@ -1,6 +1,6 @@
 import React from "react";
 import {View, StyleSheet} from "react-native";
-import CheckBox from "../components/CheckBox";
+import CheckBox from "../components/CheckBox.jsx";
 
 const StatusContainer = ({data, toggleComplete}) => {
   return (
