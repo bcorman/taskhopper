@@ -1,7 +1,7 @@
 import React from "react";
 import {StyleSheet, View} from "react-native";
-import Header from "../components/Header.jsx";
-import TodosContainer from "../containers/TodosContainer.jsx";
+import Header from "../components/Header.js";
+import TodosContainer from "../containers/TodosContainer.js";
 
 const TodoScreen = () => {
   const [showComplete, toggleShowComplete] = React.useState(false);
@@ -10,9 +10,7 @@ const TodoScreen = () => {
     <View style={styles.container}>
       <Header
         title={showComplete ? "Show Incomplete" : "Show Complete"}
-        toggleShowComplete={() =>
-          toggleShowComplete(showComplete => !showComplete)
-        }
+        toggleShowComplete={() => toggleShowComplete(show => !show)}
       />
       <TodosContainer showComplete={showComplete} />
     </View>

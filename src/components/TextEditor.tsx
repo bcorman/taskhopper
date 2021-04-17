@@ -5,7 +5,7 @@ import {TextInput, StyleSheet} from "react-native";
 while blurOnSubmit means the device keyboard return key will trigger the submit action,
 rather than move the cursor to the next line */
 const TextEditor = ({data, actions}) => {
-  const [text, setText] = React.useState("" || data.todo.text);
+  const [text, setText] = React.useState(data.todo.text || "");
 
   const onSubmit = () => {
     actions.updateTodo(data.todo.id, {text});
@@ -18,8 +18,6 @@ const TextEditor = ({data, actions}) => {
         textDecorationLine: data.todo.complete ? "line-through" : "none",
       }}
       autoFocus={!data.todo.text}
-      underLineColorAndroid="transparent"
-      underlineColor="transparent"
       onFocus={() => {
         if (!data.isActive) {
           actions.setActive(true);
@@ -30,7 +28,6 @@ const TextEditor = ({data, actions}) => {
         if (data.isActive) {
           actions.setActive(false);
         }
-
         // Delete todo if it is empty or contains only whitespace characters
         if (
           ((!text || !text.trim().length) && !data.todo.text) ||
@@ -41,7 +38,7 @@ const TextEditor = ({data, actions}) => {
       }}
       onSubmitEditing={onSubmit}
       onEndEditing={onSubmit}
-      onChangeText={text => setText(text)}
+      onChangeText={textUpdate => setText(textUpdate)}
       blurOnSubmit
       multiline
       maxLength={1000}
