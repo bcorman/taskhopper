@@ -7,8 +7,8 @@ import {
   Platform,
 } from "react-native";
 import uuid from "react-native-uuid";
-import TodoContainer from "./TodoContainer.jsx";
-import NewTodoFooter from "../components/NewTodoFooter.jsx";
+import TodoContainer from "./TodoContainer";
+import NewTodoFooter from "../components/NewTodoFooter";
 import {seedData} from "../seedData";
 import {Todo, Todos} from "../shared/interfaces/Todos.interface";
 /* This container handles the bulk of the work in the app. 

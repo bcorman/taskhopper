@@ -1,8 +1,8 @@
 import React from "react";
 import {StyleSheet, View} from "react-native";
-import TextEditor from "../components/TextEditor.jsx";
-import StatusContainer from "./StatusContainer.jsx";
-import Options from "../components/Options.jsx";
+import TextEditor from "../components/TextEditor";
+import StatusContainer from "./StatusContainer";
+import Options from "../components/Options";
 
 const TodoContainer = ({todo, openFormID, actions}) => {
   // Set todo to active if it contains no text
